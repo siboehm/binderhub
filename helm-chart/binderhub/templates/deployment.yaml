@@ -111,8 +111,10 @@ spec:
         {{- if .Values.jupyterhub.hub.allowNamedServers }}
         - name: JUPYTERHUB_ALLOW_NAMED_SERVERS
           value: "true"
+        {{- if .Values.jupyterhub.hub.namedServerLimitPerUser }}
         - name: JUPYTERHUB_NAMED_SERVER_LIMIT_PER_USER
           value: {{ .Values.jupyterhub.hub.namedServerLimitPerUser | quote }}
+        {{- end }}
         {{- end }}
         {{- end }}
         {{- with .Values.extraEnv }}
